@@ -1,22 +1,18 @@
 package ar.unrn.eje1;
+/*Clase abstacta, para eviatar duplicar codigo.
+ * Las instancias solo seran objetos que implementen la clase Libro.
+ */
 
-public class Libro {
-  public static final int INFANTILES = 2;
-  public static final int REGULARES = 0;
-  public static final int NUEVO_LANZAMIENTO = 1;
-  private String nombre;
-  private int codigoPrecio;
+public abstract class Libro {
 
-  public Libro(String nombre, int priceCode) {
-    this.nombre = nombre;
-    this.codigoPrecio = priceCode;
-  }
+	protected String nombre;
 
-  public int codigoPrecio() {
-    return codigoPrecio;
-  }
+	public String nombre() {
+		return nombre;
+	}
 
-  public String nombre() {
-    return nombre;
-  }
+	public abstract float calculoDeMiAlquiler(int diasAlquilados);
+
+	public abstract boolean alquilerFrecuente(int diasAlquilados);
+
 }
