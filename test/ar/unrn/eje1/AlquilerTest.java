@@ -17,15 +17,58 @@ public class AlquilerTest {
 
 	@Test
 
-	public void testCalculo() {
+	public void testRegulares() {
 
 		yo.alquilar(alquilerElTunel);
 		yo.alquilar(alquilerAntesDelFin);
 
 		float[] resultado = yo.calcularDeudaYPuntosObtenidos();
 
-		assertTrue(resultado[0] == 10.0);
-		assertTrue(resultado[1] == 0);
+		assertTrue(resultado[0] == 10.0); // Valor
+		assertTrue(resultado[1] == 0); // puntos
+	}
+
+	@Test
+
+	public void testNuevosLanzamientos() {
+
+		Libro    libro1    = new NuevoLanzamiento("Lo que el viento se llevo");
+		Libro    libro2    = new NuevoLanzamiento("Harry Potter");
+		Libro    libro3    = new NuevoLanzamiento("Mi pobre Angelito");
+		Alquiler alquiler1 = new Alquiler(libro1, 5);
+		Alquiler alquiler2 = new Alquiler(libro2, 3);
+		Alquiler alquiler3 = new Alquiler(libro3, 1);                          // NO suma puntos.
+		Cliente  yo        = new Cliente("Rodrigo");
+
+		yo.alquilar(alquiler1);
+		yo.alquilar(alquiler2);
+		yo.alquilar(alquiler3);
+
+		float[] resultado = yo.calcularDeudaYPuntosObtenidos();
+
+		assertTrue(resultado[0] == 27.0); // Valor
+		assertTrue(resultado[1] == 2); // Puntos
+
+	}
+
+	@Test
+
+	public void testInfantiles() {
+
+		Libro    libro1    = new Infantiles("Matrix");
+		Libro    libro2    = new Infantiles("Terminator");
+		Alquiler alquiler1 = new Alquiler(libro1, 5);
+		Alquiler alquiler2 = new Alquiler(libro2, 3);
+		Cliente  yo        = new Cliente("Juan");
+
+		yo.alquilar(alquiler1);
+		yo.alquilar(alquiler2);
+
+		float[] resultado = yo.calcularDeudaYPuntosObtenidos();
+
+		assertTrue(resultado[0] == 3.0);// Valor
+		assertTrue(resultado[1] == 0); // Puntos
+
 	}
 
 }

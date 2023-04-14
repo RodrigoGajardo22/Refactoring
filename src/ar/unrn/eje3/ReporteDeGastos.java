@@ -1,51 +1,27 @@
 package ar.unrn.eje3;
 
-import java.time.LocalDate;
-import java.util.List;
-
-enum TipoDeGasto {
-  CENA, DESAYUNO, ALQUILER_AUTO
-}
-
-class Gasto {
-  TipoDeGasto tipoGasto;
-  int monto;
-}
-
 public class ReporteDeGastos {
-  public void imprimir(List<Gasto> gastos) {
-    int total = 0;
-    int gastosDeComida = 0;
 
-    System.out.println("Expenses " + LocalDate.now());
+	ProvedorDeFecha fecha;
 
-    for (Gasto gasto : gastos) {
-      if (gasto.tipoGasto == TipoDeGasto.CENA || gasto.tipoGasto == TipoDeGasto.DESAYUNO) {
-        gastosDeComida += gasto.monto;
-      }
+	public ReporteDeGastos(ProvedorDeFecha fecha) {
+		this.fecha = fecha;
+	}
 
-      String nombreGasto = "";
-      switch (gasto.tipoGasto) {
-      case CENA:
-        nombreGasto = "Cena";
-        break;
-      case DESAYUNO:
-        nombreGasto = "Desayuno";
-        break;
-      case ALQUILER_AUTO:
-        nombreGasto = "Alquiler de Autos";
-        break;
-      }
+	public String datelleDeGastos(Gastos gasto) {
 
-      String marcaExcesoComidas = gasto.tipoGasto == TipoDeGasto.CENA && gasto.monto > 5000
-          || gasto.tipoGasto == TipoDeGasto.DESAYUNO && gasto.monto > 1000 ? "X" : " ";
+		String detalle = "Fecha: " + fecha.fecha();
 
-      System.out.println(nombreGasto + "\t" + gasto.monto + "\t" + marcaExcesoComidas);
+		detalle += "\n\nDetalles: \n";
+		detalle += gasto.detalles();
 
-      total += gasto.monto;
-    }
+		detalle += "\n\nMonto de comida: $";
+		detalle += gasto.gastosDeComida();
 
-    System.out.println("Gastos de comida: " + gastosDeComida);
-    System.out.println("Total de gastos: " + total);
-  }
+		detalle += "\n\nMonto total: $";
+		detalle += gasto.gastoTotal();
+
+		return detalle;
+	}
+
 }

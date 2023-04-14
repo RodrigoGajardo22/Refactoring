@@ -14,7 +14,7 @@ public class NuevoLanzamiento extends Libro {
 		return diasAlquilados * 3;
 	}
 
-	public boolean alquilerFrecuente(int diasAlquilados) {
+	public boolean frecuente(int diasAlquilados) {
 		return diasAlquilados > 1;
 	}
 

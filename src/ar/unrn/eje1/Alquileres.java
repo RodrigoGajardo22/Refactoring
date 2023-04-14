@@ -26,11 +26,11 @@ public class Alquileres {
 
 	public int calcularPuntos() {
 		int puntos = 0;
+
 		for (Alquiler alquiler : listaDeAlquileres) {
-			if (alquiler.libroFrecuente()) {
-				puntos++;
-			}
+			puntos += alquiler.puntos();
 		}
+
 		return puntos;
 	}
 
