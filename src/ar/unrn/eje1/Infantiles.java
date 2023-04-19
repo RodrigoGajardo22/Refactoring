@@ -16,8 +16,4 @@ public class Infantiles extends Libro {
 		return 1.5f;
 	}
 
-	public boolean frecuente(int diasAlquilados) {
-		return false;
-	}
-
 }

@@ -14,8 +14,12 @@ public class NuevoLanzamiento extends Libro {
 		return diasAlquilados * 3;
 	}
 
-	public boolean frecuente(int diasAlquilados) {
-		return diasAlquilados > 1;
+	public int puntos(int diasAlquilados) {
+		if (diasAlquilados > 1) {
+			return 1;
+		}
+		return 0;
+
 	}
 
 }

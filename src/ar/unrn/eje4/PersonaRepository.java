@@ -40,24 +40,24 @@ public class PersonaRepository {
 	 * Dado un id, retorna: - null si el id no se encuentra en la BD - la instancia
 	 * de Persona encontrada
 	 */
-	public Persona buscarId(Long id) {
-		return jdbi.withHandle(handle -> {
+	// public Persona buscarId(Long id) {
+//		return jdbi.withHandle(handle -> {
+//
+//			var rs = handle.select("select nombre, apellido from persona where id_persona = ?").bind(0, id)
+//					.mapToMap(String.class).list();
+//
+//			if (rs.size() == 0) {
+//				return null;
+//			}
+//
+//			return new Persona(rs.get(0).get("nombre"), rs.get(0).get("apellido"));
+//
+//		});
+//	}
 
-			var rs = handle.select("select nombre, apellido from persona where id_persona = ?").bind(0, id)
-					.mapToMap(String.class).list();
+	public Optional<Persona> buscarId(Long id) throws IOException {
 
-			if (rs.size() == 0) {
-				return null;
-			}
-
-			return new Persona(rs.get(0).get("nombre"), rs.get(0).get("apellido"));
-
-		});
-	}
-
-	public Optional<Persona> buscarId2(Long id) throws IOException {
-
-		Objects.nonNull(id);
+		Objects.requireNonNull(id);
 
 		return jdbi.withHandle(handle -> {
 

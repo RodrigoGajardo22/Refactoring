@@ -13,6 +13,8 @@ public abstract class Libro {
 
 	public abstract float calculoDeMiAlquiler(int diasAlquilados);
 
-	public abstract boolean frecuente(int diasAlquilados);
+	public int puntos(int diasAlquilados) {
+		return 0;
+	}
 
 }

@@ -16,8 +16,4 @@ public class Regulares extends Libro {
 		return 2;
 	}
 
-	public boolean frecuente(int diasAlquilados) {
-		return false;
-	}
-
 }

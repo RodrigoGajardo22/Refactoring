@@ -13,16 +13,8 @@ public class Alquiler {
 		return this.libro.calculoDeMiAlquiler(diasAlquilados);
 	}
 
-	private boolean libroFrecuente() {
-
-		return this.libro.frecuente(diasAlquilados);
-	}
-
 	public int puntos() {
 
-		if (libroFrecuente())
-			return 1;
-
-		return 0;
+		return libro.puntos(diasAlquilados);
 	}
 }

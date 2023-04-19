@@ -10,7 +10,7 @@ public class Filtro {
 
 	public static List<String[]> filtrar(Lamda<String> lamda, List<String[]> csvData) {
 		List<String[]> csvDataFinal = new ArrayList<String[]>();
-		for (int i = 0; i < csvData.size(); i++) {
+		for (int i = 0; i < csvData.size(); i++) { // cambiar a forach
 			if (lamda.ejecutar(csvData.get(i))) {
 				csvDataFinal.add(csvData.get(i));
 			}
